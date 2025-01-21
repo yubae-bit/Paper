@@ -24,8 +24,7 @@ GAMMA.reg2 <- gamlss(
   family = GA, 
   n.cyc = 1000
 )
-GAMMA.reg3 <- stepGAIC(GAMMA.reg2, what = c("mu"))
-GAMMA.reg4 <- stepGAIC(GAMMA.reg2, what = c("sigma"))
+GAMMA.reg3 <- stepGAICAll.A(GAMMA.reg2)
 
 
 # Model to use after removing non-significant covariates
@@ -65,8 +64,7 @@ IG.reg2 <- gamlss(
   n.cyc = 1000
 )
 
-IG.reg3 <- stepGAIC(IG.reg2, what = c("mu"))
-IG.reg4 <- stepGAIC(IG.reg2, what = c("sigma"))
+IG.reg3 <- stepGAICAll.A(IG.reg2)
 
 # IG.reg <- gamlss(
 #   formula = Avg_Cost ~ nrOfFloors + Item_Type_C + FloorsType_C 
@@ -103,8 +101,7 @@ LOGNO.reg2 <- gamlss(
   family = LOGNO(mu.link = "log"), 
   n.cyc = 1000
 )
-LOGNO.reg3 <- stepGAIC(LOGNO.reg2, what = c("mu"))
-LOGNO.reg4 <- stepGAIC(LOGNO.reg2, what = c("sigma"))
+LOGNO.reg3 <- stepGAICAll.A(LOGNO.reg2)
 # LOGNO.reg <- gamlss(
 #   formula = Avg_Cost ~ nrOfFloors + FloorsType_C + postcode_slo_mean + postcode_rgh_mean, 
 #   sigma.fo = ~ Item_Type_C + FloorsType_C + floodvulnerability + windvulnerability
@@ -121,7 +118,7 @@ WEI3.reg <- gamlss(Avg_Cost ~ SubItemType_C + nrOfFloors + Construction_Material
                     + postcode_slo_mean + postcode_rgh_mean + Building_Age 
                     + log_postcode_area + log_postcode_perimeter 
                     + log_postcode_coast_len, data = learn, family = WEI3, n.cyc = 1000)
-WEI3.reg1 <- GAIC(WEI3.reg)
+WEI3.reg1 <- stepGAIC(WEI3.reg)
 # Training sigma
 WEI3.reg2 <- gamlss(
   formula = Avg_Cost ~ SubItemType_C + nrOfFloors + Construction_Material_C
@@ -139,8 +136,7 @@ WEI3.reg2 <- gamlss(
   family = WEI3, 
   n.cyc = 1000
 )
-WEI3.reg3 <- stepGAIC(WEI3.reg2, what = c("mu"))
-WEI3.reg4 <- stepGAIC(WEI3.reg2, what = c("sigma"))
+WEI3.reg3 <- stepGAICAll.A(WEI3.reg2)
 # WEI3.reg <- gamlss(
 #   formula = Avg_Cost ~ SubItemType_C + nrOfFloors + Item_Type_C + FloorsType_C
 #   + postcode_slo_mean + postcode_rgh_mean + log_postcode_area, 
@@ -157,7 +153,7 @@ PARETO2o.reg <- gamlss(Avg_Cost ~ SubItemType_C + nrOfFloors + Construction_Mate
                     + postcode_slo_mean + postcode_rgh_mean + Building_Age 
                     + log_postcode_area + log_postcode_perimeter 
                     + log_postcode_coast_len, data = learn, family = PARETO2o, n.cyc = 1000)
-PARETO2o.reg1 <- GAIC(PARETO2o.reg)
+PARETO2o.reg1 <- stepGAIC(PARETO2o.reg)
 # Training sigma
 PARETO2o.reg2 <- gamlss(
   formula = Avg_Cost ~ SubItemType_C + nrOfFloors + Construction_Material_C
@@ -175,8 +171,7 @@ PARETO2o.reg2 <- gamlss(
   family = PARETO2o, 
   n.cyc = 1000
 )
-PARETO2o.reg3 <- stepGAIC(PARETO2o.reg2, what = c("mu"))
-PARETO2o.reg4 <- stepGAIC(PARETO2o.reg2, what = c("sigma"))
+PARETO2o.reg3 <- stepGAICAll.A(PARETO2o.reg2)
 # PARETO2o.reg <- gamlss(
 #   formula = Avg_Cost ~ SubItemType_C + log_postcode_perimeter , 
 #   sigma.fo = ~ nrOfFloors + FloorsType_C, 
